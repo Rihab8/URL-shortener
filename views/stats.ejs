@@ -72,6 +72,7 @@
           <th>Full URL</th>
           <th>Short URL</th>
           <th>Clicks</th>
+          <th>Time created</th>
         </tr>
       </thead>
       <tbody>
@@ -80,6 +81,7 @@
           <td><a href="<%= url.full %>"><%= url.full %></a></td>
           <td><a href="<%= url.short %>"><%= url.short %></a></td>
           <td><%= url.clicks %></td>
+          <td><%= url.time %></td>
         </tr>
         <% }) %>
       </tbody>

@@ -4,10 +4,13 @@ const ShortUrl = require("./models/shortUrl");
 const app = express();
 const open = require("open");
 
-mongoose.connect("mongodb://localhost/urlshorter", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb+srv://rihab:12345@cluster0-tkl3u.mongodb.net/test?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 mongoose.connection
   .once("open", () => {
     console.log("connected");

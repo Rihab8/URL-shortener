@@ -4,7 +4,7 @@ const ShortUrl = require("./models/shortUrl");
 const app = express();
 const open = require("open");
 
-mongoose.connect("mongodb://localhost/urlshort", {
+mongoose.connect("mongodb://localhost/urlshorter", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -17,11 +17,13 @@ mongoose.connection
   });
 
 app.set("view engine", "ejs");
+app.use(express.static("./public"));
+app.use("/assets", express.static("assets"));
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/", async (req, res) => {
   const shortUrls = await ShortUrl.find();
-  res.render("home", { shortUrls: shortUrls });
+  res.render("home.ejs", { shortUrls });
 });
 
 app.post("/shortUrls", async (req, res) => {
@@ -29,12 +31,15 @@ app.post("/shortUrls", async (req, res) => {
 
   res.redirect("/");
 });
-
+app.get("/stats", async (req, res) => {
+  const shortUrls = await ShortUrl.find();
+  res.render("stats.ejs", { shortUrls });
+});
 app.get("/:shortUrl", async (req, res) => {
   const shortUrl = await ShortUrl.findOne({
     short: "http://127.0.0.1:3000/" + req.params.shortUrl,
   });
-  console.log(shortUrl);
+  //console.log(shortUrl);
   if (shortUrl == null) return res.sendStatus(404);
 
   shortUrl.clicks++;

@@ -7,7 +7,7 @@
   "description": "A little website",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "start": "node server.js"
   },
   "author": "Rihab Kasim",
   "license": "ISC",

@@ -40,7 +40,7 @@ app.get("/stats", async (req, res) => {
 });
 app.get("/:shortUrl", async (req, res) => {
   const shortUrl = await ShortUrl.findOne({
-    short: "http://127.0.0.1:3000/" + req.params.shortUrl,
+    short: "https://url-shortener1234.herokuapp.com/" + req.params.shortUrl,
   });
   //console.log(shortUrl);
   if (shortUrl == null) return res.sendStatus(404);

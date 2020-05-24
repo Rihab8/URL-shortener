@@ -52,5 +52,19 @@ app.get("/:shortUrl", async (req, res) => {
   });
   res.redirect("/");
 });
+app.get("/:baseUrl/:shortUrl", async (req, res) => {
+  const shortUrl = await ShortUrl.findOne({
+    short: "https://url-shortener1234.herokuapp.com/" + req.params.shortUrl,
+  });
+  //console.log(shortUrl);
+  if (shortUrl == null) return res.sendStatus(404);
+
+  shortUrl.clicks++;
+  shortUrl.save();
+  open(shortUrl.full, function (err) {
+    if (err) throw err;
+  });
+  res.redirect("/");
+});
 
 app.listen(process.env.PORT || 3000);

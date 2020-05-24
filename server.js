@@ -54,7 +54,7 @@ app.get("/:shortUrl", async (req, res) => {
 });
 app.get("/:baseUrl/:shortUrl", async (req, res) => {
   const shortUrl = await ShortUrl.findOne({
-    short: "https://url-shortener1234.herokuapp.com/" + req.params.shortUrl,
+    short: "url-shortener1234.herokuapp.com/" + req.params.shortUrl,
   });
   //console.log(shortUrl);
   if (shortUrl == null) return res.sendStatus(404);

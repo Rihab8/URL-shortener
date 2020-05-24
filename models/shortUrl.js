@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const shortId = require("shortid");
-const base = "https://url-shortener1234.herokuapp.com/";
+const base = "url-shortener1234.herokuapp.com/";
 const shortUrlSchema = new mongoose.Schema({
   full: {
     type: String,

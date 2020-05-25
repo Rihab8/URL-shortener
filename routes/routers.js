@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const open = require("open");
 const shortid = require("shortid");
 const date = require("../date");
-const baseUrl = "127.0.0.1:32/";
+const baseUrl = "url-shortener1234.herokuapp.com/";
 
 //body parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false });

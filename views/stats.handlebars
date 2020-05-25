@@ -1,0 +1,34 @@
+{{#each urls}}
+
+{{this.clicks}}
+{{this.shortUrl}}
+{{/each}}
+<canvas id="myChart" style="width: 50%; height:50%"></canvas>
+
+<script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const click = [];
+    const names = [];
+    "{{#each urls}}" + click.push("{{this.clicks}}") + names.push("{{this.urlCode}}") + "{{/each}}"
+    console.log(names)
+    console.log(click)
+    // console.log("{{#each urls}} {{this.urlCode}} {{/each}}");
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'bar',
+
+        // The data for our dataset
+        data: {
+            labels: names,
+            datasets: [{
+                label: 'no of clicks',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: click
+            }]
+        },
+
+        // Configuration options go here
+        options: {}
+    });
+</script>

@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/">Shortener</a>
+    <a class="navbar mr-1" style="padding-left: 500px;" href="/stats">Statistics</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+</nav>
+<div class="container">
+    <h1 style="text-align: center; padding-top: 20px;">
+        Make it short Make it better
+    </h1>
+
+    <form action="/" method="POST" class="my-4 form-inline">
+        <input required placeholder="Url goes here" type="url" name="longUrl" id="longUrl"
+            class="form-control col mr-2" />
+
+        <button class="btn button1 text-white" type="submit">
+            Shortener
+        </button>
+    </form>
+    <div>{{#url urls}}
+        <a href={{shortUrl}}>{{shortUrl}}</a>
+        {{/url}}</div>
+
+
+</div>

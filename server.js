@@ -17,6 +17,6 @@ app.set("view engine", "handlebars");
 //routes
 app.use("/", routes);
 //server connection
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 32, () => {
   console.log("Server listening to port 3000....");
 });

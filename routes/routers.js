@@ -55,10 +55,10 @@ router.get("/:baseUrl/:shortUrl", async (req, res) => {
   shortUrl.clicks++;
   shortUrl.save();
 
-  open(shortUrl.longUrl, function (err) {
-    if (err) throw err;
-  });
-  res.redirect("/");
+//   open(shortUrl.longUrl, function (err) {
+//     if (err) throw err;
+//   });
+  res.redirect(shortUrl.longUrl);
 });
 
 router.get("/:shortUrl", async (req, res) => {

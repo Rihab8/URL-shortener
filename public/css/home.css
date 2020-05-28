@@ -2,7 +2,7 @@ body {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   color: #989898;
-  background-color: rgba(34, 20, 20, 0.7);
+  background-color: #181c22;
 }
 h1 {
   color: #181c22;
@@ -45,23 +45,27 @@ input[type="text"] {
   color: #989898;
 }
 
-button {
+/* .button1 {
   padding: 20px;
   width: 30%;
+  
+  
+  height: 20px;
   float: left;
   background: transparent;
   box-sizing: border-box;
-
   cursor: pointer;
-  font-size: 20px;
-}
+  
+} */
 .button1 {
-  border: 2px solid black;
+  border: 2px solid goldenrod;
+  background: transparent;
+  box-sizing: border-box;
+  font-size: 20px;
   color: aliceblue;
 }
-button:hover {
-  background-color: #181c22;
-  color: red;
+.button1:hover {
+  color: rgb(218, 100, 32);
 }
 a {
   width: 100%;
@@ -90,4 +94,18 @@ a:hover {
   background-color: pink;
   display: inline-block;
   margin: 0 1px;
+}
+
+#short-url {
+  float: left;
+}
+.copy-btn {
+  box-sizing: border-box;
+  border: 2px solid greenyellow;
+  background-color: #202020;
+  color: #fff;
+}
+.copy-btn:hover {
+  color: #989898;
+  background-color: #181c22;
 }

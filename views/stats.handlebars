@@ -1,19 +1,70 @@
-{{#each urls}}
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <a class="navbar-brand" href="/">Shortener</a>
+    <a class="navbar mr-1 stats" style="padding-left: 500px;" href="/stats">Statistics</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-{{this.clicks}}
-{{this.shortUrl}}
-{{/each}}
-<canvas id="myChart" style="width: 50%; height:50%"></canvas>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+</nav>
+<div class="section">
+    <div class="container">
+        <h3>Total no of Clicks {{tClicks}}</h3>
+        <h3>No of Clicks in last minute:{{tClicksPh}}</h3>
+        <canvas id="myChart1" style="width: 50%; height:50%"></canvas>
+        <canvas id="myChart2" style="width: 50%; height:50%"></canvas>
+    </div>
+</div>
+<div class="container py-5">
+    <header class="text-center text-white">
+        <h1 class="display-4">URLs</h1>
+    </header>
+    <div class="row py-5">
+        <div class="col-lg-10 mx-auto">
+            <div class="card rounded shadow border-0">
+                <div class="card-body p-5 bg-white rounded">
+                    <div class="table-responsive">
+                        <table id="myTable" style="width:100%" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>UrlCode</th>
+                                    <th>ShortUrl</th>
+                                    <th>TimeCreated</th>
+                                    <th>TotalClicks</th>
+                                    <th>LastClick</th>
+                                    <th>Clicksph</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each urls}}
+                                <tr>
+                                    <td>{{this.urlCode}}</td>
+                                    <td>{{this.shortUrl}}</td>
+                                    <td>{{this.time}}</td>
+                                    <td>{{this.clicks}}</td>
+                                    <td>{{this.lastClick}}</td>
+                                    <td>{{this.clicksPh}}</td>
+                                </tr>
+                                {{/each}}
 
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
-    const ctx = document.getElementById('myChart').getContext('2d');
+    const ctx1 = document.getElementById('myChart1').getContext('2d');
     const click = [];
     const names = [];
     "{{#each urls}}" + click.push("{{this.clicks}}") + names.push("{{this.urlCode}}") + "{{/each}}"
     console.log(names)
     console.log(click)
     // console.log("{{#each urls}} {{this.urlCode}} {{/each}}");
-    var chart = new Chart(ctx, {
+    var chart = new Chart(ctx1, {
         // The type of chart we want to create
         type: 'bar',
 
@@ -31,4 +82,26 @@
         // Configuration options go here
         options: {}
     });
+    const ctx2 = document.getElementById('myChart2').getContext('2d');
+    const clicksPh = []
+    "{{#each urls}}" + clicksPh.push("{{this.clicksPh}}") + "{{/each}}"
+    var chart = new Chart(ctx2, {
+        // The type of chart we want to create
+        type: 'bar',
+
+        // The data for our dataset
+        data: {
+            labels: names,
+            datasets: [{
+                label: 'no of clicks in last 1 minute',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: clicksPh
+            }]
+        },
+
+        // Configuration options go here
+        options: {}
+    });
+
 </script>

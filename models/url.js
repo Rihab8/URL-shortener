@@ -14,7 +14,14 @@ const urlSchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
+  clicksPh: {
+    type: Number,
+    default: 0,
+  },
   time: {
+    type: String,
+  },
+  lastClick: {
     type: String,
   },
 });
